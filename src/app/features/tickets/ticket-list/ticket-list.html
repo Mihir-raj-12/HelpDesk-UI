@@ -1,0 +1,65 @@
+<div class="page-container">
+  
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Support Tickets</h1>
+      <p class="page-subtitle">Manage and track your helpdesk requests.</p>
+    </div>
+    <button mat-flat-button color="primary">
+      <mat-icon>add</mat-icon> New Ticket
+    </button>
+  </div>
+
+  <div *ngIf="isLoading" class="state-container">
+    <mat-icon class="spinning">autorenew</mat-icon>
+    <p>Loading tickets...</p>
+  </div>
+
+  <div *ngIf="errorMessage" class="state-container error">
+    <mat-icon>error_outline</mat-icon>
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <div *ngIf="!isLoading && tickets.length === 0 && !errorMessage" class="state-container">
+    <mat-icon>inbox</mat-icon>
+    <p>No tickets found! You're all caught up.</p>
+  </div>
+
+  <div class="ticket-grid" *ngIf="tickets.length > 0">
+    
+    <mat-card class="ticket-card" *ngFor="let ticket of tickets">
+      <mat-card-header>
+        <mat-card-title>#{{ ticket.id }} - {{ ticket.title }}</mat-card-title>
+        <mat-card-subtitle>{{ ticket.categoryName }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p class="description">{{ ticket.description }}</p>
+        
+        <div class="meta-row">
+          <mat-icon class="small-icon">person</mat-icon>
+          <span>Raised by: <strong>{{ ticket.raisedByUserName }}</strong></span>
+        </div>
+        
+        <div class="meta-row">
+          <mat-icon class="small-icon">calendar_today</mat-icon>
+          <span>Created: {{ ticket.createdDate | date:'mediumDate' }}</span>
+        </div>
+
+        <div class="badges">
+          <span class="badge status" [ngClass]="ticket.status.toLowerCase()">
+            {{ ticket.status }}
+          </span>
+          <span class="badge priority" [ngClass]="ticket.priority.toLowerCase()">
+            {{ ticket.priority }} Priority
+          </span>
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions align="end">
+        <button mat-stroked-button color="primary">View Details</button>
+      </mat-card-actions>
+    </mat-card>
+
+  </div>
+</div>
