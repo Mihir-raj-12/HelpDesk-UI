@@ -5,7 +5,7 @@
       <h1 class="page-title">Support Tickets</h1>
       <p class="page-subtitle">Manage and track your helpdesk requests.</p>
     </div>
-    <button mat-flat-button color="primary">
+    <button mat-flat-button color="primary" routerLink="/tickets/new">
       <mat-icon>add</mat-icon> New Ticket
     </button>
   </div>
@@ -57,7 +57,9 @@
       </mat-card-content>
 
       <mat-card-actions align="end">
-        <button mat-stroked-button color="primary">View Details</button>
+        <button mat-stroked-button color="primary" [routerLink]="['/tickets', ticket.id]">
+          View Details
+        </button>
       </mat-card-actions>
     </mat-card>
 

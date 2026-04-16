@@ -20,10 +20,18 @@ export const routes: Routes = [
       {
         path: 'tickets',
         loadComponent: () => import('./features/tickets/ticket-list/ticket-list').then(m => m.TicketList)
+      },
+      {
+        path: 'tickets/new', 
+        loadComponent: () => import('./features/tickets/ticket-create/ticket-create').then(m => m.TicketCreate)
+      },
+      {
+        path: 'tickets/:id',
+        loadComponent: () => import('./features/tickets/ticket-detail/ticket-detail').then(m => m.TicketDetail)
       }
 
 
-      // We will add the 'tickets' route right here in the next step!
+      
     ]
   },
 

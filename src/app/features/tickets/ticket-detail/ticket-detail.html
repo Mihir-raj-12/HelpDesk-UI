@@ -1,0 +1,82 @@
+<div class="page-container">
+  
+  <div class="top-nav">
+    <button mat-button color="primary" routerLink="/tickets">
+      <mat-icon>arrow_back</mat-icon> Back to Tickets
+    </button>
+  </div>
+
+  <div *ngIf="isLoading" class="state-container">
+    <mat-icon class="spinning">autorenew</mat-icon>
+    <p>Loading ticket details...</p>
+  </div>
+  <div *ngIf="errorMessage" class="state-container error">
+    <mat-icon>error_outline</mat-icon>
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <div *ngIf="ticket" class="content-wrapper">
+    
+    <div class="main-column">
+      <mat-card class="detail-card">
+        <mat-card-header>
+          <div class="header-content">
+            <h1 class="ticket-title">#{{ ticket.id }} - {{ ticket.title }}</h1>
+            <div class="badges">
+              <span class="badge status" [ngClass]="ticket.status.toLowerCase()">{{ ticket.status }}</span>
+              <span class="badge priority" [ngClass]="ticket.priority.toLowerCase()">{{ ticket.priority }} Priority</span>
+            </div>
+          </div>
+        </mat-card-header>
+
+        <mat-divider></mat-divider>
+
+        <mat-card-content class="description-content">
+          <h3>Description</h3>
+          <p class="description-text">{{ ticket.description }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="sidebar-column">
+      <mat-card class="meta-card">
+        <mat-card-header>
+          <mat-card-title>Ticket Details</mat-card-title>
+        </mat-card-header>
+        
+        <mat-divider></mat-divider>
+
+        <mat-card-content>
+          <div class="meta-item">
+            <span class="label">Category</span>
+            <span class="value">{{ ticket.categoryName }}</span>
+          </div>
+
+          <div class="meta-item">
+            <span class="label">Raised By</span>
+            <span class="value">
+              <mat-icon class="tiny-icon">person</mat-icon> {{ ticket.raisedByUserName }}
+            </span>
+          </div>
+
+          <div class="meta-item">
+            <span class="label">Assigned To</span>
+            <span class="value" [class.unassigned]="!ticket.assignedToUserName">
+              <mat-icon class="tiny-icon">support_agent</mat-icon> 
+              {{ ticket.assignedToUserName || 'Unassigned' }}
+            </span>
+          </div>
+
+          <div class="meta-item">
+            <span class="label">Created On</span>
+            <span class="value">
+              <mat-icon class="tiny-icon">calendar_today</mat-icon> 
+              {{ ticket.createdDate | date:'medium' }}
+            </span>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+  </div>
+</div>

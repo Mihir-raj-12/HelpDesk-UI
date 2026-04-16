@@ -1,0 +1,72 @@
+<div class="page-container">
+  
+  <div class="top-nav">
+    <button mat-button color="primary" routerLink="/tickets">
+      <mat-icon>arrow_back</mat-icon> Cancel
+    </button>
+  </div>
+
+  <div class="form-wrapper">
+    <mat-card>
+      <mat-card-header>
+        <div class="header-content">
+          <h2>Create New Ticket</h2>
+          <p>Please provide detailed information so our support team can help you faster.</p>
+        </div>
+      </mat-card-header>
+
+      <mat-card-content>
+        
+        <div *ngIf="errorMessage" class="error-banner">
+          <mat-icon>error_outline</mat-icon> {{ errorMessage }}
+        </div>
+
+        <form [formGroup]="ticketForm" (ngSubmit)="onSubmit()" class="ticket-form">
+          
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Ticket Title</mat-label>
+            <input matInput formControlName="title" placeholder="Brief summary of the issue">
+            <mat-icon matSuffix>title</mat-icon>
+            <mat-error *ngIf="ticketForm.get('title')?.hasError('required')">Title is required.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Category</mat-label>
+            <mat-select formControlName="categoryId">
+              <mat-option *ngFor="let cat of categories" [value]="cat.id">
+                {{ cat.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="ticketForm.get('categoryId')?.hasError('required')">Please select a category.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Priority Level</mat-label>
+            <mat-select formControlName="priority">
+              <mat-option *ngFor="let prio of priorities" [value]="prio">
+                {{ prio }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="ticketForm.get('priority')?.hasError('required')">Please select a priority.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Detailed Description</mat-label>
+            <textarea matInput formControlName="description" rows="5" placeholder="Explain the issue in detail..."></textarea>
+            <mat-error *ngIf="ticketForm.get('description')?.hasError('required')">Description is required.</mat-error>
+            <mat-error *ngIf="ticketForm.get('description')?.hasError('minlength')">Description must be at least 10 characters.</mat-error>
+          </mat-form-field>
+
+          <div class="form-actions">
+            <button mat-stroked-button type="button" routerLink="/tickets">Cancel</button>
+            <button mat-flat-button color="primary" type="submit" [disabled]="ticketForm.invalid || isLoading">
+              {{ isLoading ? 'Submitting...' : 'Submit Ticket' }}
+            </button>
+          </div>
+
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+</div>
