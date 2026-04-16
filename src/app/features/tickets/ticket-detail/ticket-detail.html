@@ -40,8 +40,11 @@
 
     <div class="sidebar-column">
       <mat-card class="meta-card">
-        <mat-card-header>
+        <mat-card-header style="display: flex; justify-content: space-between; width: 100%;">
           <mat-card-title>Ticket Details</mat-card-title>
+          <button mat-icon-button color="primary" (click)="toggleEditMode()" *ngIf="!isEditing" title="Edit Ticket">
+            <mat-icon>edit</mat-icon>
+          </button>
         </mat-card-header>
         
         <mat-divider></mat-divider>
@@ -53,28 +56,53 @@
           </div>
 
           <div class="meta-item">
-            <span class="label">Raised By</span>
-            <span class="value">
-              <mat-icon class="tiny-icon">person</mat-icon> {{ ticket.raisedByUserName }}
-            </span>
+            <span class="label">Status</span>
+            
+            <span class="value" *ngIf="!isEditing">{{ ticket.status }}</span>
+            
+            <mat-form-field appearance="outline" *ngIf="isEditing" style="margin-top: 8px;">
+              <mat-select [(ngModel)]="editStatus">
+                <mat-option *ngFor="let s of statuses" [value]="s">{{ s }}</mat-option>
+              </mat-select>
+            </mat-form-field>
           </div>
 
           <div class="meta-item">
+            <span class="label">Priority</span>
+            
+            <span class="value" *ngIf="!isEditing">{{ ticket.priority }}</span>
+            
+            <mat-form-field appearance="outline" *ngIf="isEditing" style="margin-top: 8px;">
+              <mat-select [(ngModel)]="editPriority">
+                <mat-option *ngFor="let p of priorities" [value]="p">{{ p }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+         <div class="meta-item">
             <span class="label">Assigned To</span>
-            <span class="value" [class.unassigned]="!ticket.assignedToUserName">
+            
+            <span class="value" *ngIf="!isEditing" [class.unassigned]="!ticket.assignedToUserName">
               <mat-icon class="tiny-icon">support_agent</mat-icon> 
               {{ ticket.assignedToUserName || 'Unassigned' }}
             </span>
-          </div>
 
-          <div class="meta-item">
-            <span class="label">Created On</span>
-            <span class="value">
-              <mat-icon class="tiny-icon">calendar_today</mat-icon> 
-              {{ ticket.createdDate | date:'medium' }}
-            </span>
+            <mat-form-field appearance="outline" *ngIf="isEditing" style="margin-top: 8px;">
+              <mat-label>Select Agent</mat-label>
+              <mat-select [(ngModel)]="editAgentId">
+                <mat-option value="">-- Unassigned --</mat-option>
+                <mat-option *ngFor="let agent of supportAgents" [value]="agent.id">
+                  {{ agent.fullName }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
           </div>
         </mat-card-content>
+
+        <mat-card-actions *ngIf="isEditing" align="end" style="padding: 16px;">
+          <button mat-button (click)="toggleEditMode()">Cancel</button>
+          <button mat-flat-button color="primary" (click)="saveChanges()">Save Changes</button>
+        </mat-card-actions>
       </mat-card>
     </div>
 

@@ -24,4 +24,24 @@ export class TicketService {
     return this.http.post<ApiResponse<Ticket>>(this.apiUrl, data);
   }
 
+  updateTicketStatus(ticketId : number , status :string) : Observable<ApiResponse<boolean>>{
+    const payload = { ticketId, status };
+    return this.http.put<ApiResponse<boolean>>(`${this.apiUrl}/status`, payload);
+  }
+
+  updateTicketPriority(ticketId : number , priority : string) : Observable<ApiResponse<boolean>>{
+    const payload = { ticketId, priority };
+    return this.http.put<ApiResponse<boolean>>(`${this.apiUrl}/priority`, payload);
+  }
+
+getSupportAgents(): Observable<ApiResponse<any[]>> {
+    
+    return this.http.get<ApiResponse<any[]>>(`${environment.apiUrl}/User/agents`);
+  }
+
+  assignTicket(ticketId: number, agentId: string): Observable<ApiResponse<boolean>> {
+    const payload = { ticketId, agentId };
+    return this.http.put<ApiResponse<boolean>>(`${this.apiUrl}/assign`, payload);
+  }
+
 }
