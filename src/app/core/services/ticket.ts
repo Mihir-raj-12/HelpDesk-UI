@@ -4,6 +4,7 @@ import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 import { ApiResponse } from '../../shared/models/api-response.model';
 import { Ticket } from '../../shared/models/ticket.model';
+import { Comment } from '../../shared/models/comment.model';
 
 @Injectable({
   providedIn: 'root',
@@ -42,6 +43,15 @@ getSupportAgents(): Observable<ApiResponse<any[]>> {
   assignTicket(ticketId: number, agentId: string): Observable<ApiResponse<boolean>> {
     const payload = { ticketId, agentId };
     return this.http.put<ApiResponse<boolean>>(`${this.apiUrl}/assign`, payload);
+  }
+
+  getComments(ticketId: number): Observable<ApiResponse<Comment[]>> {
+    return this.http.get<ApiResponse<Comment[]>>(`${environment.apiUrl}/Comment/getByTicketId?ticketId=${ticketId}`);
+  }
+
+  // 2. Post a new message
+  addComment(payload: { ticketId: number, content: string }): Observable<ApiResponse<Comment>> {
+    return this.http.post<ApiResponse<Comment>>(`${environment.apiUrl}/Comment`, payload);
   }
 
 }

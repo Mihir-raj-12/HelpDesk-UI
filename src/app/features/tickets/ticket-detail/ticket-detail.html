@@ -10,6 +10,7 @@
     <mat-icon class="spinning">autorenew</mat-icon>
     <p>Loading ticket details...</p>
   </div>
+  
   <div *ngIf="errorMessage" class="state-container error">
     <mat-icon>error_outline</mat-icon>
     <p>{{ errorMessage }}</p>
@@ -35,10 +36,43 @@
           <h3>Description</h3>
           <p class="description-text">{{ ticket.description }}</p>
         </mat-card-content>
-      </mat-card>
-    </div>
 
-    <div class="sidebar-column">
+        <mat-divider></mat-divider>
+
+        <mat-card-content class="conversation-section">
+          <h3>Conversation History</h3>
+
+          <div class="comment-list" *ngIf="comments.length > 0">
+            <div class="comment-item" *ngFor="let comment of comments">
+              <div class="comment-header">
+                <strong>{{ comment.writtenByUserName }}</strong>
+                <span class="date">{{ comment.createdDate | date:'short' }}</span>
+              </div>
+              <p class="comment-text">{{ comment.content }}</p>
+            </div>
+          </div>
+
+          <div *ngIf="comments.length === 0" class="no-comments">
+            <p>No comments yet. Start the conversation!</p>
+          </div>
+
+          <div class="reply-box">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Type your reply...</mat-label>
+              <textarea matInput [(ngModel)]="newCommentText" rows="3"></textarea>
+            </mat-form-field>
+            
+            <div class="reply-actions" align="end">
+              <button mat-flat-button color="primary" 
+                      [disabled]="!newCommentText.trim() || isSubmittingComment" 
+                      (click)="postComment()">
+                <mat-icon>send</mat-icon> {{ isSubmittingComment ? 'Sending...' : 'Post Reply' }}
+              </button>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div> <div class="sidebar-column">
       <mat-card class="meta-card">
         <mat-card-header style="display: flex; justify-content: space-between; width: 100%;">
           <mat-card-title>Ticket Details</mat-card-title>
@@ -57,9 +91,7 @@
 
           <div class="meta-item">
             <span class="label">Status</span>
-            
             <span class="value" *ngIf="!isEditing">{{ ticket.status }}</span>
-            
             <mat-form-field appearance="outline" *ngIf="isEditing" style="margin-top: 8px;">
               <mat-select [(ngModel)]="editStatus">
                 <mat-option *ngFor="let s of statuses" [value]="s">{{ s }}</mat-option>
@@ -69,9 +101,7 @@
 
           <div class="meta-item">
             <span class="label">Priority</span>
-            
             <span class="value" *ngIf="!isEditing">{{ ticket.priority }}</span>
-            
             <mat-form-field appearance="outline" *ngIf="isEditing" style="margin-top: 8px;">
               <mat-select [(ngModel)]="editPriority">
                 <mat-option *ngFor="let p of priorities" [value]="p">{{ p }}</mat-option>
@@ -81,12 +111,10 @@
 
          <div class="meta-item">
             <span class="label">Assigned To</span>
-            
             <span class="value" *ngIf="!isEditing" [class.unassigned]="!ticket.assignedToUserName">
               <mat-icon class="tiny-icon">support_agent</mat-icon> 
               {{ ticket.assignedToUserName || 'Unassigned' }}
             </span>
-
             <mat-form-field appearance="outline" *ngIf="isEditing" style="margin-top: 8px;">
               <mat-label>Select Agent</mat-label>
               <mat-select [(ngModel)]="editAgentId">
@@ -104,7 +132,4 @@
           <button mat-flat-button color="primary" (click)="saveChanges()">Save Changes</button>
         </mat-card-actions>
       </mat-card>
-    </div>
-
-  </div>
-</div>
+    </div> </div> </div>

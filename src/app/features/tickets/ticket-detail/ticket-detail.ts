@@ -9,11 +9,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { FormsModule } from '@angular/forms';
 import {MatSelectModule } from '@angular/material/select';
+import { Comment } from '../../../shared/models/comment.model'; 
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-ticket-detail',
   standalone: true,
-  imports: [FormsModule,CommonModule,RouterModule,MatCardModule,MatButtonModule,MatIconModule,MatDividerModule,MatSelectModule],
+  imports: [FormsModule,CommonModule,RouterModule,MatCardModule,MatButtonModule,MatIconModule,MatDividerModule,MatSelectModule,MatInputModule,MatFormFieldModule],
   templateUrl: './ticket-detail.html',
   styleUrl: './ticket-detail.scss',
 })
@@ -25,14 +28,16 @@ ticket : Ticket | null = null;
 errorMessage: string = '';
 isLoading: boolean = true;
 isEditing: boolean = false;
-  statuses = ['Open', 'InProgress', 'Resolved', 'Closed'];
-  priorities = ['Low', 'Medium', 'High', 'Critical'];
-
-  supportAgents: any[] = [];
-
+supportAgents: any[] = [];
   editStatus: string = '';
   editPriority: string = '';
   editAgentId: string = '';
+  comments: Comment[] = [];
+  newCommentText: string = '';
+  isSubmittingComment: boolean = false;
+
+  statuses = ['Open', 'InProgress', 'Resolved', 'Closed'];
+  priorities = ['Low', 'Medium', 'High', 'Critical'];
 
 ngOnInit(): void {
   const idParam = this.route.snapshot.paramMap.get('id');
@@ -56,6 +61,7 @@ fetchTicketDetails(id: number): void {
     next: (response) => { 
       if (response.isSuccess) {
         this.ticket = response.data;
+        this.fetchComments(id);
       } else {
         this.errorMessage = 'Failed to load ticket details.';
       }
@@ -66,6 +72,13 @@ fetchTicketDetails(id: number): void {
       console.error('Error fetching ticket details:', error);
       this.isLoading = false;
     },
+  });
+}
+fetchComments(ticketId: number): void {
+  this.ticketService.getComments(ticketId).subscribe(res => {
+    if (res.isSuccess) {
+      this.comments = res.data;
+    }
   });
 }
 
@@ -102,7 +115,6 @@ toggleEditMode(): void {
     }
   }
 
-  // Helper method to safely chain the remaining updates
   private updateStatusAndPriority(): void {
     // Only update status if it actually changed
     if (this.editStatus !== this.ticket!.status) {
@@ -138,5 +150,33 @@ toggleEditMode(): void {
     this.isEditing = false;
     this.isLoading = false;
     this.fetchTicketDetails(this.ticket!.id); 
+  }
+
+  postComment(): void {
+    // Prevent sending empty spaces
+    if (!this.newCommentText.trim() || !this.ticket) return;
+
+    this.isSubmittingComment = true;
+    
+    const payload = {
+      ticketId: this.ticket.id,
+      content: this.newCommentText
+    };
+
+    this.ticketService.addComment(payload).subscribe({
+      next: (res) => {
+        if (res.isSuccess) {
+          // Push the new comment into our list so the UI updates instantly
+          this.comments.push(res.data);
+          // Clear the text box so they can type another message
+          this.newCommentText = ''; 
+        }
+        this.isSubmittingComment = false;
+      },
+      error: (err) => {
+        console.error("Failed to post comment", err);
+        this.isSubmittingComment = false;
+      }
+    });
   }
 }

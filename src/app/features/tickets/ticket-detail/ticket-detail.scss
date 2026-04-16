@@ -88,3 +88,55 @@
 }
 .spinning { animation: spin 2s linear infinite; }
 @keyframes spin { 100% { transform: rotate(360deg); } }
+
+/* --- Conversation Section Styles --- */
+.conversation-section {
+  padding-top: 24px !important;
+  
+  h3 { margin-top: 0; margin-bottom: 16px; color: #555; }
+}
+
+.comment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.comment-item {
+  background-color: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+
+  .comment-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 14px;
+    
+    strong { color: #1976d2; }
+    .date { color: #888; font-size: 12px; }
+  }
+
+  .comment-text {
+    margin: 0;
+    color: #333;
+    line-height: 1.5;
+    white-space: pre-wrap; /* Keeps user's line breaks intact! */
+  }
+}
+
+.no-comments {
+  text-align: center;
+  padding: 20px;
+  color: #777;
+  font-style: italic;
+  background-color: #fcfcfc;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.full-width {
+  width: 100%;
+}
