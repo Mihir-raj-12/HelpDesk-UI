@@ -36,8 +36,8 @@ supportAgents: any[] = [];
   newCommentText: string = '';
   isSubmittingComment: boolean = false;
 
-  statuses = ['Open', 'InProgress', 'Resolved', 'Closed'];
-  priorities = ['Low', 'Medium', 'High', 'Critical'];
+statuses: string[] = [];
+priorities: string[] = [];
 
 ngOnInit(): void {
   const idParam = this.route.snapshot.paramMap.get('id');
@@ -49,8 +49,21 @@ ngOnInit(): void {
         if (res.isSuccess) {
           this.supportAgents = res.data;
         }
+      });   
+  
+  // 2. NEW: Fetch Statuses dynamically
+      this.ticketService.getStatuses().subscribe(res => {
+          if (res.isSuccess) this.statuses = res.data;
       });
-  } else {
+
+      // 3. NEW: Fetch Priorities dynamically
+      this.ticketService.getPriorities().subscribe(res => {
+          if (res.isSuccess) this.priorities = res.data;
+      });
+
+    
+    }
+  else {
     this.errorMessage = 'Invalid ticket ID.';
     this.isLoading = false;
   }

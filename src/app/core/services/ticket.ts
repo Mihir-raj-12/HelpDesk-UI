@@ -54,4 +54,17 @@ getSupportAgents(): Observable<ApiResponse<any[]>> {
     return this.http.post<ApiResponse<Comment>>(`${environment.apiUrl}/Comment`, payload);
   }
 
+  getCategories(): Observable<ApiResponse<any[]>> {
+    return this.http.get<ApiResponse<any[]>>(`${environment.apiUrl}/Category`);
+  }
+
+  getStatuses(): Observable<ApiResponse<string[]>> {
+    return this.http.get<ApiResponse<string[]>>(`${environment.apiUrl}/Lookup/statuses`);
+  }
+
+  getPriorities(): Observable<ApiResponse<string[]>> {
+    return this.http.get<ApiResponse<string[]>>(`${environment.apiUrl}/Lookup/priorities`);
+  }
+
+
 }
