@@ -29,15 +29,15 @@ errorMessage: string = '';
 isLoading: boolean = true;
 isEditing: boolean = false;
 supportAgents: any[] = [];
-  editStatus: string = '';
-  editPriority: string = '';
+ editStatusId: number = 0;
+  editPriorityId: number = 0;
   editAgentId: string = '';
   comments: Comment[] = [];
   newCommentText: string = '';
   isSubmittingComment: boolean = false;
 
-statuses: string[] = [];
-priorities: string[] = [];
+statuses: any[] = [];
+  priorities: any[] = [];
 
 ngOnInit(): void {
   const idParam = this.route.snapshot.paramMap.get('id');
@@ -98,10 +98,14 @@ fetchComments(ticketId: number): void {
 toggleEditMode(): void {
     if (!this.ticket) return;
     
-    // When turning edit mode ON, copy the current values into our temporary variables
-    this.editStatus = this.ticket.status;
-    this.editPriority = this.ticket.priority;
-    this.editAgentId = this.ticket.assignedToUserId || '';
+    // We need to map the string status on the ticket to its corresponding ID from our lookup list
+    const foundStatus = this.statuses.find(s => s.name === this.ticket!.status);
+    this.editStatusId = foundStatus ? foundStatus.id : 0;
+
+    const foundPriority = this.priorities.find(p => p.name === this.ticket!.priority);
+    this.editPriorityId = foundPriority ? foundPriority.id : 0;
+
+    this.editAgentId = this.ticket.assignedToUserId || ''; 
     this.isEditing = !this.isEditing;
   }
 
@@ -128,10 +132,12 @@ toggleEditMode(): void {
     }
   }
 
-  private updateStatusAndPriority(): void {
-    // Only update status if it actually changed
-    if (this.editStatus !== this.ticket!.status) {
-      this.ticketService.updateTicketStatus(this.ticket!.id, this.editStatus).subscribe({
+ private updateStatusAndPriority(): void {
+    // We check if the ID changed instead of the string
+    const originalStatus = this.statuses.find(s => s.name === this.ticket!.status)?.id;
+    
+    if (this.editStatusId !== originalStatus) {
+      this.ticketService.updateTicketStatus(this.ticket!.id, this.editStatusId).subscribe({
         next: () => this.updatePriority(),
         error: () => this.finalizeSaveWithError()
       });
@@ -139,12 +145,12 @@ toggleEditMode(): void {
       this.updatePriority();
     }
   }
-
   // Helper method to do the final update
   private updatePriority(): void {
-    // Only update priority if it actually changed
-    if (this.editPriority !== this.ticket!.priority) {
-      this.ticketService.updateTicketPriority(this.ticket!.id, this.editPriority).subscribe({
+    const originalPriority = this.priorities.find(p => p.name === this.ticket!.priority)?.id;
+
+    if (this.editPriorityId !== originalPriority) {
+      this.ticketService.updateTicketPriority(this.ticket!.id, this.editPriorityId).subscribe({
         next: () => this.finalizeSave(),
         error: () => this.finalizeSaveWithError()
       });

@@ -25,13 +25,13 @@ export class TicketService {
     return this.http.post<ApiResponse<Ticket>>(this.apiUrl, data);
   }
 
-  updateTicketStatus(ticketId : number , status :string) : Observable<ApiResponse<boolean>>{
-    const payload = { ticketId, status };
+ updateTicketStatus(ticketId: number, statusId: number): Observable<ApiResponse<boolean>> {
+    const payload = { ticketId, status: statusId }; // The payload must still map to 'status' for C#
     return this.http.put<ApiResponse<boolean>>(`${this.apiUrl}/status`, payload);
   }
 
-  updateTicketPriority(ticketId : number , priority : string) : Observable<ApiResponse<boolean>>{
-    const payload = { ticketId, priority };
+updateTicketPriority(ticketId: number, priorityId: number): Observable<ApiResponse<boolean>> {
+    const payload = { ticketId, priority: priorityId }; // The payload must still map to 'priority' for C#
     return this.http.put<ApiResponse<boolean>>(`${this.apiUrl}/priority`, payload);
   }
 
@@ -58,12 +58,12 @@ getSupportAgents(): Observable<ApiResponse<any[]>> {
     return this.http.get<ApiResponse<any[]>>(`${environment.apiUrl}/Category`);
   }
 
-  getStatuses(): Observable<ApiResponse<string[]>> {
-    return this.http.get<ApiResponse<string[]>>(`${environment.apiUrl}/Lookup/statuses`);
+  getStatuses(): Observable<ApiResponse<any[]>> {
+    return this.http.get<ApiResponse<any[]>>(`${environment.apiUrl}/Lookup/statuses`);
   }
 
-  getPriorities(): Observable<ApiResponse<string[]>> {
-    return this.http.get<ApiResponse<string[]>>(`${environment.apiUrl}/Lookup/priorities`);
+  getPriorities(): Observable<ApiResponse<any[]>> {
+    return this.http.get<ApiResponse<any[]>>(`${environment.apiUrl}/Lookup/priorities`);
   }
 
 

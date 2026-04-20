@@ -93,8 +93,8 @@
             <span class="label">Status</span>
             <span class="value" *ngIf="!isEditing">{{ ticket.status }}</span>
             <mat-form-field appearance="outline" *ngIf="isEditing" style="margin-top: 8px;">
-              <mat-select [(ngModel)]="editStatus">
-                <mat-option *ngFor="let s of statuses" [value]="s">{{ s }}</mat-option>
+              <mat-select [(ngModel)]="editStatusId">
+                <mat-option *ngFor="let s of statuses" [value]="s.id">{{ s.name }}</mat-option>
               </mat-select>
             </mat-form-field>
           </div>
@@ -103,8 +103,8 @@
             <span class="label">Priority</span>
             <span class="value" *ngIf="!isEditing">{{ ticket.priority }}</span>
             <mat-form-field appearance="outline" *ngIf="isEditing" style="margin-top: 8px;">
-              <mat-select [(ngModel)]="editPriority">
-                <mat-option *ngFor="let p of priorities" [value]="p">{{ p }}</mat-option>
+              <mat-select [(ngModel)]="editPriorityId">
+                <mat-option *ngFor="let p of priorities" [value]="p.id">{{ p.name }}</mat-option>
               </mat-select>
             </mat-form-field>
           </div>
