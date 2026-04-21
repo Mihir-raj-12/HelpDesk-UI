@@ -7,7 +7,7 @@ import { ApiResponse } from '../../shared/models/api-response.model';
 @Injectable({
   providedIn: 'root',
 })
-export class User {
+export class UserService {
   private http = inject(HttpClient);
   private apiUrl = `${environment.apiUrl}/User`;
 
@@ -20,8 +20,8 @@ export class User {
     return this.http.post<ApiResponse<any>>(this.apiUrl, payload);
   }
 
-  updateUserRole(userId: string, newRole: string): Observable<ApiResponse<boolean>> {
-    const payload = { userId, newRole };
+  updateUserRole(userId: string, newRoleId: number): Observable<ApiResponse<boolean>> {
+    const payload = { userId: userId, newRole: newRoleId }; // Sends the number to C#
     return this.http.put<ApiResponse<boolean>>(`${this.apiUrl}/role`, payload);
   }
 
@@ -33,6 +33,11 @@ export class User {
       { headers }
     );
   }
+
+  getRoles(): Observable<ApiResponse<any[]>> {
+    return this.http.get<ApiResponse<any[]>>(`${environment.apiUrl}/Lookup/roles`);
+  }
+
 
 
 }

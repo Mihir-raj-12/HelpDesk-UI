@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -18,29 +18,34 @@ import { Router,RouterModule } from '@angular/router';
   templateUrl: './ticket-create.html',
   styleUrl: './ticket-create.scss',
 })
-export class TicketCreate {
+export class TicketCreate implements OnInit {
 private fb = inject(FormBuilder);
 private ticketService = inject(TicketService);
 private router = inject(Router);
 
-categories = [
-    { id: 1, name: 'Hardware Issue' },
-    { id: 2, name: 'Software Bug' },
-    { id: 3, name: 'Access Request' },
-    { id: 4, name: 'Network Problem' }
-  ];
-
-  priorities = ['Low', 'Medium', 'High', 'Critical'];
+categories: any[] = [];
+  priorities: any[] = [];
 
   ticketForm = this.fb.group({
     title : ['' , [Validators.required, Validators.maxLength(100)]],
     description : ['' , [Validators.required, Validators.maxLength(100)]],
     categoryId : [null , Validators.required],
-    priority: ['', Validators.required]
+    priority: [null, Validators.required]
   })
 
   isLoading: boolean = false;
   errorMessage: string = '';
+
+ngOnInit(): void {
+    this.ticketService.getCategories().subscribe(res => {
+      if(res.isSuccess) this.categories = res.data;
+    });
+
+    this.ticketService.getPriorities().subscribe(res => {
+      if(res.isSuccess) this.priorities = res.data;
+    });
+  }
+
 
   onSubmit(): void {
     if (this.ticketForm.invalid) {

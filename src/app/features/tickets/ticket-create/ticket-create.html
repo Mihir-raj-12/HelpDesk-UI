@@ -42,14 +42,13 @@
 
           <mat-form-field appearance="outline" class="full-width">
             <mat-label>Priority Level</mat-label>
-            <mat-select formControlName="priority">
-              <mat-option *ngFor="let prio of priorities" [value]="prio">
-                {{ prio }}
+            <mat-select formControlName="priority" required>
+              <mat-option *ngFor="let prio of priorities" [value]="prio.id">
+                {{ prio.name }}
               </mat-option>
             </mat-select>
             <mat-error *ngIf="ticketForm.get('priority')?.hasError('required')">Please select a priority.</mat-error>
           </mat-form-field>
-
           <mat-form-field appearance="outline" class="full-width">
             <mat-label>Detailed Description</mat-label>
             <textarea matInput formControlName="description" rows="5" placeholder="Explain the issue in detail..."></textarea>

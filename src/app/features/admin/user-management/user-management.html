@@ -1,1 +1,92 @@
-<p>user-management works!</p>
+<div class="page-container" style="padding: 24px; max-width: 1200px; margin: auto;">
+  
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+    <h1>User Management</h1>
+    <button mat-flat-button color="primary" (click)="toggleCreateForm()" *ngIf="!showCreateForm">
+      <mat-icon>person_add</mat-icon> Add New User
+    </button>
+  </div>
+
+  <mat-card *ngIf="showCreateForm" style="margin-bottom: 24px; background-color: #f8f9fa;">
+    <mat-card-header>
+      <mat-card-title>Create New User Account</mat-card-title>
+    </mat-card-header>
+    <mat-card-content style="padding-top: 16px;">
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+        <mat-form-field appearance="outline">
+          <mat-label>Full Name</mat-label>
+          <input matInput [(ngModel)]="newUser.fullName" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Email Address</mat-label>
+          <input matInput type="email" [(ngModel)]="newUser.email" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Temporary Password</mat-label>
+          <input matInput type="text" [(ngModel)]="newUser.password" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>System Role</mat-label>
+          <mat-select [(ngModel)]="newUser.role" required>
+            <mat-option *ngFor="let role of roles" [value]="role.id">{{ role.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+    </mat-card-content>
+    <mat-card-actions align="end" style="padding: 16px;">
+      <button mat-button (click)="toggleCreateForm()">Cancel</button>
+      <button mat-flat-button color="primary" [disabled]="isSubmitting" (click)="createNewUser()">
+        {{ isSubmitting ? 'Creating...' : 'Create Account' }}
+      </button>
+    </mat-card-actions>
+  </mat-card>
+
+  <div *ngIf="isLoading" style="text-align: center; padding: 40px;">
+    <mat-icon class="spinning">autorenew</mat-icon>
+    <p>Loading users...</p>
+  </div>
+
+  <mat-card *ngIf="!isLoading">
+    <mat-card-content style="padding: 0;">
+      <table style="width: 100%; border-collapse: collapse; text-align: left;">
+        <thead>
+          <tr style="background-color: #f1f3f4; border-bottom: 2px solid #e0e0e0;">
+            <th style="padding: 16px;">Name</th>
+            <th style="padding: 16px;">Email</th>
+            <th style="padding: 16px;">Current Role</th>
+            <th style="padding: 16px;">Status</th>
+            <th style="padding: 16px; text-align: right;">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users" style="border-bottom: 1px solid #e0e0e0;">
+            <td style="padding: 16px;"><strong>{{ user.fullName }}</strong></td>
+            <td style="padding: 16px;">{{ user.email }}</td>
+            <td style="padding: 16px;">
+              <mat-form-field appearance="outline" subscriptSizing="dynamic" style="width: 150px;">
+                <mat-select [value]="user.role" (selectionChange)="changeUserRole(user.id, $event.value)">
+                  <mat-option *ngFor="let role of roles" [value]="role.name">{{ role.name }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+            <td style="padding: 16px;">
+              <span *ngIf="user.isActive" style="color: green; font-weight: bold;">Active</span>
+              <span *ngIf="!user.isActive" style="color: red; font-weight: bold;">Deactivated</span>
+            </td>
+            <td style="padding: 16px; text-align: right;">
+              <button mat-icon-button color="warn" (click)="deactivate(user.id)" [disabled]="!user.isActive" title="Deactivate User">
+                <mat-icon>block</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </mat-card-content>
+  </mat-card>
+
+</div>

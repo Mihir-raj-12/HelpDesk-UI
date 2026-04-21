@@ -16,6 +16,12 @@
         <mat-icon matListItemIcon>confirmation_number</mat-icon>
         <span matListItemTitle>Tickets</span>
       </a>
+
+      <a mat-list-item routerLink="/admin/users" routerLinkActive="active-link" *ngIf="isAdmin">
+        <mat-icon matListItemIcon>manage_accounts</mat-icon>
+        <span matListItemTitle>Manage Users</span>
+      </a>
+
     </mat-nav-list>
   </mat-sidenav>
 
@@ -26,18 +32,18 @@
         <mat-icon>menu</mat-icon>
       </button>
 
-      <span class="spacer"></span>
+      <span class="spacer" style="flex: 1 1 auto;"></span>
 
-      <div class="user-profile">
-        <mat-icon>account_circle</mat-icon>
-        <span>{{ userName }}</span>
+      <div class="user-profile" style="display: flex; align-items: center;">
+        <mat-icon style="margin-right: 8px;">account_circle</mat-icon>
+        <span style="margin-right: 16px;">{{ userName }}</span>
         <button mat-icon-button (click)="logout()" title="Logout">
           <mat-icon>logout</mat-icon>
         </button>
       </div>
     </mat-toolbar>
 
-    <div class="main-wrapper">
+    <div class="main-wrapper" style="padding: 24px;">
       <router-outlet></router-outlet>
     </div>
 

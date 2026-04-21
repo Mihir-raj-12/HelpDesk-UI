@@ -1,0 +1,16 @@
+.spacer { 
+  flex: 1 1 auto; 
+}
+
+.global-navbar { 
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+  z-index: 10; 
+  position: relative; 
+}
+
+.main-content { 
+  /* Assuming the navbar is roughly 64px tall, this ensures the content area takes up the rest of the screen */
+  height: calc(100vh - 64px); 
+  overflow-y: auto; 
+  background-color: #f4f5f7; 
+}

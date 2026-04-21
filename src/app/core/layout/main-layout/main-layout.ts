@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth';
@@ -22,10 +22,16 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './main-layout.html',
   styleUrl: './main-layout.scss',
 })
-export class MainLayout {
+export class MainLayout implements OnInit {
   private authservice = inject(AuthService);
+  userName = 'HelpDesk User';
 
-  userName: string = 'John Doe'; // Placeholder, ideally should come from user profile data
+ isAdmin = false;
+
+  ngOnInit(): void {
+    this.isAdmin = this.authservice.isAdmin();
+    this.userName = this.authservice.getUserName();
+  }
 
   logout() {
     this.authservice.logout();

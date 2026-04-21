@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { adminGuard } from './core/guards/admin-guard';
 
 export const routes: Routes = [
 
@@ -28,7 +29,15 @@ export const routes: Routes = [
       {
         path: 'tickets/:id',
         loadComponent: () => import('./features/tickets/ticket-detail/ticket-detail').then(m => m.TicketDetail)
-      }
+      },
+      {
+        path: 'admin/users',
+        loadComponent: () => import('./features/admin/user-management/user-management').then(m => m.UserManagement),
+        canActivate: [adminGuard] // <-- Protect this route with the admin guard
+      },
+      
+
+    
 
 
       
