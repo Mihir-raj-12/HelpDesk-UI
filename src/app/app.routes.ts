@@ -35,9 +35,14 @@ export const routes: Routes = [
         loadComponent: () => import('./features/admin/user-management/user-management').then(m => m.UserManagement),
         canActivate: [adminGuard] // <-- Protect this route with the admin guard
       },
-      
 
-    
+      {
+        path: 'admin/categories',
+        loadComponent: () => import('./features/admin/category-management/category-management').then(m => m.CategoryManagement),
+        canActivate: [adminGuard] // <-- Protect this route with the admin guard
+
+      }
+      
 
 
       

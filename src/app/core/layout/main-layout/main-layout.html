@@ -22,6 +22,11 @@
         <span matListItemTitle>Manage Users</span>
       </a>
 
+      <a mat-list-item routerLink="/admin/categories" routerLinkActive="active-link" *ngIf="isAdmin">
+        <mat-icon matListItemIcon>category</mat-icon>
+        <span matListItemTitle>Categories</span>
+      </a>
+
     </mat-nav-list>
   </mat-sidenav>
 

@@ -5,7 +5,7 @@
       <h1 class="page-title">Support Tickets</h1>
       <p class="page-subtitle">Manage and track your helpdesk requests.</p>
     </div>
-    <button mat-flat-button color="primary" routerLink="/tickets/new">
+    <button mat-flat-button color="primary" routerLink="/tickets/new" *ngIf="canCreateTicket">
       <mat-icon>add</mat-icon> New Ticket
     </button>
   </div>
@@ -20,48 +20,75 @@
     <p>{{ errorMessage }}</p>
   </div>
 
-  <div *ngIf="!isLoading && tickets.length === 0 && !errorMessage" class="state-container">
-    <mat-icon>inbox</mat-icon>
-    <p>No tickets found! You're all caught up.</p>
-  </div>
-
-  <div class="ticket-grid" *ngIf="tickets.length > 0">
+  <div [hidden]="isLoading || errorMessage">
     
-    <mat-card class="ticket-card" *ngFor="let ticket of tickets">
-      <mat-card-header>
-        <mat-card-title>#{{ ticket.id }} - {{ ticket.title }}</mat-card-title>
-        <mat-card-subtitle>{{ ticket.categoryName }}</mat-card-subtitle>
-      </mat-card-header>
+    <mat-form-field appearance="outline" class="search-bar">
+      <mat-label>Search tickets...</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Search by title, category, status, etc.">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
 
-      <mat-card-content>
-        <p class="description">{{ ticket.description }}</p>
-        
-        <div class="meta-row">
-          <mat-icon class="small-icon">person</mat-icon>
-          <span>Raised by: <strong>{{ ticket.raisedByUserName }}</strong></span>
-        </div>
-        
-        <div class="meta-row">
-          <mat-icon class="small-icon">calendar_today</mat-icon>
-          <span>Created: {{ ticket.createdDate | date:'mediumDate' }}</span>
-        </div>
+    <div class="table-container mat-elevation-z2">
+      <table mat-table [dataSource]="dataSource" style="width: 100%;">
 
-        <div class="badges">
-          <span class="badge status" [ngClass]="ticket.status.toLowerCase()">
-            {{ ticket.status }}
-          </span>
-          <span class="badge priority" [ngClass]="ticket.priority.toLowerCase()">
-            {{ ticket.priority }} Priority
-          </span>
-        </div>
-      </mat-card-content>
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> ID </th>
+          <td mat-cell *matCellDef="let ticket" style="font-weight: 500; color: #555;"> #{{ticket.id}} </td>
+        </ng-container>
 
-      <mat-card-actions align="end">
-        <button mat-stroked-button color="primary" [routerLink]="['/tickets', ticket.id]">
-          View Details
-        </button>
-      </mat-card-actions>
-    </mat-card>
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef> Title </th>
+          <td mat-cell *matCellDef="let ticket"> <strong>{{ticket.title}}</strong> </td>
+        </ng-container>
 
+        <ng-container matColumnDef="category">
+          <th mat-header-cell *matHeaderCellDef> Category </th>
+          <td mat-cell *matCellDef="let ticket"> {{ticket.categoryName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="raisedBy">
+          <th mat-header-cell *matHeaderCellDef> Raised By </th>
+          <td mat-cell *matCellDef="let ticket"> {{ticket.raisedByUserName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef> Created On </th>
+          <td mat-cell *matCellDef="let ticket"> {{ticket.createdDate | date:'mediumDate'}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef> Status </th>
+          <td mat-cell *matCellDef="let ticket"> 
+            <span class="badge status" [ngClass]="ticket.status.toLowerCase()">{{ ticket.status }}</span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="priority">
+          <th mat-header-cell *matHeaderCellDef> Priority </th>
+          <td mat-cell *matCellDef="let ticket"> 
+            <span class="badge priority" [ngClass]="ticket.priority.toLowerCase()">{{ ticket.priority }}</span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef style="text-align: right; padding-right: 24px;"> Actions </th>
+          <td mat-cell *matCellDef="let ticket" style="text-align: right; padding-right: 24px;">
+            <button mat-stroked-button color="primary" [routerLink]="['/tickets', ticket.id]">
+              View
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns" style="background-color: #f8f9fa;"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="ticket-row"></tr>
+
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="8" style="padding: 32px; text-align: center; color: #777;">
+            No tickets found.
+          </td>
+        </tr>
+      </table>
+    </div>
   </div>
+
 </div>

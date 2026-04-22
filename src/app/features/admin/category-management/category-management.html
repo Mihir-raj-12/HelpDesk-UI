@@ -1,0 +1,75 @@
+<div class="page-container" style="padding: 24px; max-width: 800px; margin: auto;">
+  
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+    <h1>Category Management</h1>
+  </div>
+
+  <mat-card style="margin-bottom: 24px; background-color: #f8f9fa;">
+    <mat-card-content style="display: flex; align-items: center; gap: 16px; padding-top: 16px;">
+      <mat-form-field appearance="outline" style="flex: 1; margin-bottom: -1.25em;">
+        <mat-label>New Category Name</mat-label>
+        <input matInput [(ngModel)]="newCategoryName" placeholder="e.g., Network Issues" (keyup.enter)="createCategory()">
+      </mat-form-field>
+      <button mat-flat-button color="primary" [disabled]="isCreating || !newCategoryName.trim()" (click)="createCategory()">
+        <mat-icon>add</mat-icon> Add
+      </button>
+    </mat-card-content>
+  </mat-card>
+
+  <div *ngIf="isLoading" style="text-align: center; padding: 40px;">
+    <mat-icon class="spinning">autorenew</mat-icon>
+    <p>Loading categories...</p>
+  </div>
+
+  <mat-card *ngIf="!isLoading">
+    <mat-card-content style="padding: 0;">
+      <table style="width: 100%; border-collapse: collapse; text-align: left;">
+        <thead>
+          <tr style="background-color: #f1f3f4; border-bottom: 2px solid #e0e0e0;">
+            <th style="padding: 16px; width: 60%;">Category Name</th>
+            <th style="padding: 16px; text-align: right;">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cat of categories" style="border-bottom: 1px solid #e0e0e0;">
+            
+            <ng-container *ngIf="editingCategoryId !== cat.id">
+              <td style="padding: 16px; font-weight: 500;">{{ cat.name }}</td>
+              <td style="padding: 16px; text-align: right;">
+                <button mat-icon-button color="primary" (click)="startEditing(cat)" title="Edit">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="deactivateCategory(cat.id)" title="Deactivate">
+                  <mat-icon>delete_outline</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+
+            <ng-container *ngIf="editingCategoryId === cat.id">
+              <td style="padding: 16px;">
+                <mat-form-field appearance="outline" style="width: 100%; margin-bottom: -1.25em;">
+                  <input matInput [(ngModel)]="editedCategoryName" (keyup.enter)="saveEdit()">
+                </mat-form-field>
+              </td>
+              <td style="padding: 16px; text-align: right;">
+                <button mat-icon-button color="primary" (click)="saveEdit()" title="Save">
+                  <mat-icon>check_circle</mat-icon>
+                </button>
+                <button mat-icon-button (click)="cancelEditing()" title="Cancel">
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+
+          </tr>
+          <tr *ngIf="categories.length === 0">
+            <td colspan="2" style="padding: 24px; text-align: center; color: #777;">
+              No categories found. Create one above!
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </mat-card-content>
+  </mat-card>
+
+</div>
