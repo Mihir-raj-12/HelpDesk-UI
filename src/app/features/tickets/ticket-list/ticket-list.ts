@@ -1,11 +1,13 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, viewChild } from '@angular/core';
 import { TicketService } from '../../../core/services/ticket';
 import { AuthService } from '../../../core/services/auth'; // Injecting the Bouncer!
 import { Ticket } from '../../../shared/models/ticket.model';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ViewChild,AfterViewInit } from '@angular/core';
 
 // Angular Material Imports
+import { MatPaginator,MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -24,14 +26,16 @@ import { MatInputModule } from '@angular/material/input'; // NEW!
     MatIconModule, 
     MatTableModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatPaginatorModule
   ],
   templateUrl: './ticket-list.html',
   styleUrl: './ticket-list.scss',
 })
-export class TicketList implements OnInit {
+export class TicketList implements OnInit, AfterViewInit {
   private ticketService = inject(TicketService);
   private authService = inject(AuthService); // Check who is logged in
+  
 
   // The special Material Data Source that handles search filtering!
   dataSource = new MatTableDataSource<Ticket>();
@@ -42,6 +46,11 @@ export class TicketList implements OnInit {
   errorMessage: string = '';
   isLoading: boolean = true;
   canCreateTicket: boolean = false;
+  @ViewChild(MatPaginator) paginator!: MatPaginator; // For pagination control
+
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator; // Connect the paginator to the data source
+  }
 
   ngOnInit(): void {
     // 1. Check Role: Only Regular Users and Admins can create tickets

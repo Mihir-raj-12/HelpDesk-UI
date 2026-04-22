@@ -12,6 +12,7 @@ import {MatSelectModule } from '@angular/material/select';
 import { Comment } from '../../../shared/models/comment.model'; 
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { AuthService } from '../../../core/services/auth';
 
 @Component({
   selector: 'app-ticket-detail',
@@ -23,7 +24,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 export class TicketDetail implements OnInit {
 private route = inject(ActivatedRoute);
 private ticketService = inject(TicketService);
+private authService = inject(AuthService);
 
+
+currentUserRole: string | null = '';
 ticket : Ticket | null = null;
 errorMessage: string = '';
 isLoading: boolean = true;
@@ -40,6 +44,7 @@ statuses: any[] = [];
   priorities: any[] = [];
 
 ngOnInit(): void {
+  this.currentUserRole = this.authService.getUserRole();
   const idParam = this.route.snapshot.paramMap.get('id');
 
   if (idParam) {
@@ -98,6 +103,9 @@ fetchComments(ticketId: number): void {
 toggleEditMode(): void {
     if (!this.ticket) return;
     
+    if (this.currentUserRole !== 'Admin') {
+      this.statuses = this.statuses.filter(s => s.name !== 'Closed');
+    }
     // We need to map the string status on the ticket to its corresponding ID from our lookup list
     const foundStatus = this.statuses.find(s => s.name === this.ticket!.status);
     this.editStatusId = foundStatus ? foundStatus.id : 0;

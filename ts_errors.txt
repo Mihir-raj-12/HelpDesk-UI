@@ -1,0 +1,5 @@
+src/app/core/services/auth.spec.ts(39,40): error TS2345: Argument of type '{ data: { token: string; }; isSuccess: boolean; message: string; }' is not assignable to parameter of type 'Expected<ApiResponse<LoginResponse>>'.
+  Type '{ data: { token: string; }; isSuccess: boolean; message: string; }' is not assignable to type '{ isSuccess: ExpectedRecursive<boolean>; message: ExpectedRecursive<string>; data: ExpectedRecursive<LoginResponse>; }'.
+    Types of property 'data' are incompatible.
+      Type '{ token: string; }' is not assignable to type 'ExpectedRecursive<LoginResponse>'.
+        Type '{ token: string; }' is missing the following properties from type '{ token: Any | ExpectedRecursive<string>; fullName: Any | ExpectedRecursive<string>; email: Any | ExpectedRecursive<string>; role: Any | ExpectedRecursive<...>; expiresAt: Any | ExpectedRecursive<...>; }': fullName, email, role, expiresAt

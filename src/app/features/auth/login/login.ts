@@ -46,7 +46,12 @@ export class LoginComponent {
     this.isLoading = true;
     this.errorMessage = '';
 
-    this.authService.login(this.loginForm.value).subscribe({
+const loginPayload = {
+      username: this.loginForm.value.email, 
+      password: this.loginForm.value.password
+    };
+
+    this.authService.login(loginPayload).subscribe({
       next: (response) => {
         if (response.isSuccess) {
           localStorage.setItem('token', response.data.token);

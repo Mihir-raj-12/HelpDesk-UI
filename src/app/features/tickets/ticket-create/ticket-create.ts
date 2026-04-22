@@ -10,6 +10,8 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, Validators , FormGroup, ReactiveFormsModule,} from '@angular/forms';
 import { TicketService } from '../../../core/services/ticket';
 import { Router,RouterModule } from '@angular/router';
+import { UserService } from '../../../core/services/user';
+import { AuthService } from '../../../core/services/auth';
 
 @Component({
   selector: 'app-ticket-create',
@@ -22,21 +24,37 @@ export class TicketCreate implements OnInit {
 private fb = inject(FormBuilder);
 private ticketService = inject(TicketService);
 private router = inject(Router);
+private authService = inject(AuthService);
+private userService = inject(UserService);
 
 categories: any[] = [];
   priorities: any[] = [];
+  isAdmin: boolean = false;
+  allUsers: any[] = [];
 
   ticketForm = this.fb.group({
     title : ['' , [Validators.required, Validators.maxLength(100)]],
     description : ['' , [Validators.required, Validators.maxLength(100)]],
     categoryId : [null , Validators.required],
-    priority: [null, Validators.required]
+    priority: [null, Validators.required],
+    raisedForUserId: [null]
   })
 
   isLoading: boolean = false;
   errorMessage: string = '';
 
 ngOnInit(): void {
+  this.isAdmin = this.authService.isAdmin();
+
+  if (this.isAdmin) {
+    this.userService.getAllUser().subscribe(res => {
+      if (res.isSuccess) {
+        this.allUsers = res.data;
+      }
+    });
+  }
+
+
     this.ticketService.getCategories().subscribe(res => {
       if(res.isSuccess) this.categories = res.data;
     });

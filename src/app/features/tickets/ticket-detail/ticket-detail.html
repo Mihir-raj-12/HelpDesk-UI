@@ -72,11 +72,15 @@
           </div>
         </mat-card-content>
       </mat-card>
-    </div> <div class="sidebar-column">
+    </div> 
+
+    <div class="sidebar-column">
       <mat-card class="meta-card">
+        
         <mat-card-header style="display: flex; justify-content: space-between; width: 100%;">
           <mat-card-title>Ticket Details</mat-card-title>
-          <button mat-icon-button color="primary" (click)="toggleEditMode()" *ngIf="!isEditing" title="Edit Ticket">
+          <button mat-icon-button color="primary" (click)="toggleEditMode()" 
+                  *ngIf="!isEditing && currentUserRole !== 'RegularUser'" title="Edit Ticket">
             <mat-icon>edit</mat-icon>
           </button>
         </mat-card-header>
@@ -109,13 +113,15 @@
             </mat-form-field>
           </div>
 
-         <div class="meta-item">
+          <div class="meta-item">
             <span class="label">Assigned To</span>
+            
             <span class="value" *ngIf="!isEditing" [class.unassigned]="!ticket.assignedToUserName">
               <mat-icon class="tiny-icon">support_agent</mat-icon> 
               {{ ticket.assignedToUserName || 'Unassigned' }}
             </span>
-            <mat-form-field appearance="outline" *ngIf="isEditing" style="margin-top: 8px;">
+            
+            <mat-form-field appearance="outline" *ngIf="isEditing && currentUserRole === 'Admin'" style="margin-top: 8px;">
               <mat-label>Select Agent</mat-label>
               <mat-select [(ngModel)]="editAgentId">
                 <mat-option value="">-- Unassigned --</mat-option>
@@ -124,7 +130,12 @@
                 </mat-option>
               </mat-select>
             </mat-form-field>
+
+            <span class="value" *ngIf="isEditing && currentUserRole !== 'Admin'" style="margin-top: 8px; color: #999; font-size: 13px;">
+              (Only Admins can reassign tickets)
+            </span>
           </div>
+
         </mat-card-content>
 
         <mat-card-actions *ngIf="isEditing" align="end" style="padding: 16px;">
@@ -132,4 +143,6 @@
           <button mat-flat-button color="primary" (click)="saveChanges()">Save Changes</button>
         </mat-card-actions>
       </mat-card>
-    </div> </div> </div>
+    </div> 
+  </div> 
+</div>

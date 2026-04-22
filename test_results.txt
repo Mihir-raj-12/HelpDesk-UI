@@ -1,0 +1,221 @@
+[33m❯[39m Building...
+[32m✔[39m Building...
+[1mInitial chunk files[22m             [2m | [22m[1mNames[22m                        [2m | [22m [1mRaw size[22m
+[32mchunk-SDULD5GS.js[39m               [2m | [22m[2m-[22m                            [2m | [22m  [36m2.30 MB[39m[2m | [22m
+[32mpolyfills.js[39m                    [2m | [22m[2mpolyfills[22m                    [2m | [22m  [36m1.04 MB[39m[2m | [22m
+[32mchunk-5CJ7WRD5.js[39m               [2m | [22m[2m-[22m                            [2m | [22m[36m253.63 kB[39m[2m | [22m
+[32mchunk-BDEZXHOW.js[39m               [2m | [22m[2m-[22m                            [2m | [22m[36m242.94 kB[39m[2m | [22m
+[32mspec-ticket-list.spec.js[39m        [2m | [22m[2mspec-ticket-list.spec[22m        [2m | [22m[36m242.05 kB[39m[2m | [22m
+[32mchunk-5OGXHWDZ.js[39m               [2m | [22m[2m-[22m                            [2m | [22m[36m240.39 kB[39m[2m | [22m
+[32mchunk-ZS5SLSIZ.js[39m               [2m | [22m[2m-[22m                            [2m | [22m[36m232.61 kB[39m[2m | [22m
+[32mchunk-ZMSPTL7Y.js[39m               [2m | [22m[2m-[22m                            [2m | [22m[36m230.87 kB[39m[2m | [22m
+[32mchunk-CRF7MRDF.js[39m               [2m | [22m[2m-[22m                            [2m | [22m[36m200.73 kB[39m[2m | [22m
+[32mchunk-TP6V7CCI.js[39m               [2m | [22m[2m-[22m                            [2m | [22m[36m176.10 kB[39m[2m | [22m
+[32mchunk-HK5CSWK2.js[39m               [2m | [22m[2m-[22m                            [2m | [22m[36m124.40 kB[39m[2m | [22m
+[32mchunk-3BV7DX57.js[39m               [2m | [22m[2m-[22m                            [2m | [22m [36m96.11 kB[39m[2m | [22m
+[32mspec-main-layout.spec.js[39m        [2m | [22m[2mspec-main-layout.spec[22m        [2m | [22m [36m72.32 kB[39m[2m | [22m
+[32mjasmine-cleanup-1.js[39m            [2m | [22m[2mjasmine-cleanup-1[22m            [2m | [22m [36m67.20 kB[39m[2m | [22m
+[32mchunk-7NBAESXF.js[39m               [2m | [22m[2m-[22m                            [2m | [22m [36m66.91 kB[39m[2m | [22m
+[32mspec-dashboard.spec.js[39m          [2m | [22m[2mspec-dashboard.spec[22m          [2m | [22m [36m40.33 kB[39m[2m | [22m
+[32mchunk-RPIMPY3S.js[39m               [2m | [22m[2m-[22m                            [2m | [22m [36m27.30 kB[39m[2m | [22m
+[32mchunk-XCLSU3RK.js[39m               [2m | [22m[2m-[22m                            [2m | [22m [36m26.70 kB[39m[2m | [22m
+[32mchunk-JCY2XFHJ.js[39m               [2m | [22m[2m-[22m                            [2m | [22m [36m22.55 kB[39m[2m | [22m
+[32mtest_main.js[39m                    [2m | [22m[2mtest_main[22m                    [2m | [22m [36m21.86 kB[39m[2m | [22m
+[32mspec-ticket-detail.spec.js[39m      [2m | [22m[2mspec-ticket-detail.spec[22m      [2m | [22m [36m18.75 kB[39m[2m | [22m
+[32mspec-user-management.spec.js[39m    [2m | [22m[2mspec-user-management.spec[22m    [2m | [22m [36m11.02 kB[39m[2m | [22m
+[32mchunk-27TDCDIV.js[39m               [2m | [22m[2m-[22m                            [2m | [22m [36m10.72 kB[39m[2m | [22m
+[32mspec-ticket-create.spec.js[39m      [2m | [22m[2mspec-ticket-create.spec[22m      [2m | [22m [36m10.42 kB[39m[2m | [22m
+[32mspec-category-management.spec.js[39m[2m | [22m[2mspec-category-management.spec[22m[2m | [22m  [36m9.99 kB[39m[2m | [22m
+[32mspec-login.spec.js[39m              [2m | [22m[2mspec-login.spec[22m              [2m | [22m  [36m6.18 kB[39m[2m | [22m
+[32mchunk-6DFZ5N5U.js[39m               [2m | [22m[2m-[22m                            [2m | [22m  [36m4.93 kB[39m[2m | [22m
+[32mspec-app.spec.js[39m                [2m | [22m[2mspec-app.spec[22m                [2m | [22m  [36m3.08 kB[39m[2m | [22m
+[32mchunk-TXKSUKBV.js[39m               [2m | [22m[2m-[22m                            [2m | [22m  [36m2.30 kB[39m[2m | [22m
+[32mchunk-TTULUY32.js[39m               [2m | [22m[2m-[22m                            [2m | [22m  [36m1.99 kB[39m[2m | [22m
+[32mspec-auth.spec.js[39m               [2m | [22m[2mspec-auth.spec[22m               [2m | [22m  [36m1.89 kB[39m[2m | [22m
+[32mchunk-NNOJ4OLZ.js[39m               [2m | [22m[2m-[22m                            [2m | [22m  [36m1.55 kB[39m[2m | [22m
+[32mchunk-YRT6H3DT.js[39m               [2m | [22m[2m-[22m                            [2m | [22m  [36m1.48 kB[39m[2m | [22m
+[32mspec-ticket.spec.js[39m             [2m | [22m[2mspec-ticket.spec[22m             [2m | [22m  [36m1.23 kB[39m[2m | [22m
+[32mspec-admin-guard.spec.js[39m        [2m | [22m[2mspec-admin-guard.spec[22m        [2m | [22m  [36m1.12 kB[39m[2m | [22m
+[32mchunk-JMILMC7Q.js[39m               [2m | [22m[2m-[22m                            [2m | [22m[36m956 bytes[39m[2m | [22m
+[32mchunk-CDMD3TMD.js[39m               [2m | [22m[2m-[22m                            [2m | [22m[36m936 bytes[39m[2m | [22m
+[32mspec-dashboard-2.spec.js[39m        [2m | [22m[2mspec-dashboard-2.spec[22m        [2m | [22m[36m911 bytes[39m[2m | [22m
+[32mspec-user.spec.js[39m               [2m | [22m[2mspec-user.spec[22m               [2m | [22m[36m869 bytes[39m[2m | [22m
+[32mspec-category.spec.js[39m           [2m | [22m[2mspec-category.spec[22m           [2m | [22m[36m843 bytes[39m[2m | [22m
+[32mspec-jwt-interceptor.spec.js[39m    [2m | [22m[2mspec-jwt-interceptor.spec[22m    [2m | [22m[36m831 bytes[39m[2m | [22m
+[32mjasmine-cleanup-0.js[39m            [2m | [22m[2mjasmine-cleanup-0[22m            [2m | [22m[36m519 bytes[39m[2m | [22m
+[32mchunk-OJGHVTLY.js[39m               [2m | [22m[2m-[22m                            [2m | [22m[36m393 bytes[39m[2m | [22m
+[32mchunk-EEGNC3SL.js[39m               [2m | [22m[2m-[22m                            [2m | [22m[36m382 bytes[39m[2m | [22m
+[32mchunk-WHGBJEJ4.js[39m               [2m | [22m[2m-[22m                            [2m | [22m[36m369 bytes[39m[2m | [22m
+[32mstyles.css[39m                      [2m | [22m[2mstyles[22m                       [2m | [22m[36m214 bytes[39m[2m | [22m
+
+[1m [22m                               [2m | [22m[1mInitial total[22m                [2m | [22m  [1m5.82 MB[22m
+
+Application bundle generation complete. [2.072 seconds] - 2026-04-22T13:54:24.395Z
+
+[32m22 04 2026 19:24:24.590:INFO [karma-server]: [39mKarma v6.4.4 server started at http://localhost:9876/
+[32m22 04 2026 19:24:24.591:INFO [launcher]: [39mLaunching browsers ChromeHeadless with concurrency unlimited
+[32m22 04 2026 19:24:24.601:INFO [launcher]: [39mStarting browser ChromeHeadless
+[32m22 04 2026 19:24:26.059:INFO [Chrome Headless 147.0.0.0 (Windows 10)]: [39mConnected on socket kA6tQhs6rszrBFyeAAAB with id 80640960
+Chrome Headless 147.0.0.0 (Windows 10): Executed 0 of 20[32m SUCCESS[39m (0 secs / 0 secs)
+[1A[2K[31mChrome Headless 147.0.0.0 (Windows 10) LoginComponent should create FAILED[39m
+	ɵNotFound: NG0201: No provider found for `_HttpClient`. Source: Standalone[LoginComponent2]. Path: AuthService2 -> _HttpClient. Find more at https://v20.angular.dev/errors/NG0201
+	error properties: Object({ code: -201, ngErrorCode: -201, ngErrorMessage: 'No provider found for `_HttpClient`.', ngTokenPath: [ 'AuthService2', '_HttpClient' ] })
+	ɵNotFound: NG0201: No provider found for `_HttpClient`. Source: Standalone[LoginComponent2]. Path: AuthService2 -> _HttpClient. Find more at https://v20.angular.dev/errors/NG0201
+	    at createRuntimeError (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:924:19)
+	    at NullInjector.get (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1494:27)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:2052:33)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:2052:33)
+	    at R3Injector.retrieve (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1936:25)
+	    at injectInjectorOnly (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1049:39)
+	    at ɵɵinject (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1061:42)
+	    at inject2 (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1149:12)
+	    at AuthService2.<instance_members_initializer> (src/app/core/services/auth.ts:14:18)
+	    at new AuthService2 (src/app/core/services/auth.ts:12:8)
+Chrome Headless 147.0.0.0 (Windows 10): Executed 1 of 20[31m (1 FAILED)[39m (0 secs / 0.315 secs)
+[1A[2KChrome Headless 147.0.0.0 (Windows 10): Executed 2 of 20[31m (1 FAILED)[39m (0 secs / 0.318 secs)
+[1A[2K[31mChrome Headless 147.0.0.0 (Windows 10) MainLayout should create FAILED[39m
+	ɵNotFound: NG0201: No provider found for `_HttpClient`. Source: Standalone[MainLayout2]. Path: AuthService2 -> _HttpClient. Find more at https://v20.angular.dev/errors/NG0201
+	error properties: Object({ code: -201, ngErrorCode: -201, ngErrorMessage: 'No provider found for `_HttpClient`.', ngTokenPath: [ 'AuthService2', '_HttpClient' ] })
+	ɵNotFound: NG0201: No provider found for `_HttpClient`. Source: Standalone[MainLayout2]. Path: AuthService2 -> _HttpClient. Find more at https://v20.angular.dev/errors/NG0201
+	    at createRuntimeError (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:924:19)
+	    at NullInjector.get (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1494:27)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:2052:33)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:2052:33)
+	    at R3Injector.retrieve (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1936:25)
+	    at injectInjectorOnly (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1049:39)
+	    at ɵɵinject (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1061:42)
+	    at inject2 (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1149:12)
+	    at AuthService2.<instance_members_initializer> (src/app/core/services/auth.ts:14:18)
+	    at new AuthService2 (src/app/core/services/auth.ts:12:8)
+Chrome Headless 147.0.0.0 (Windows 10): Executed 3 of 20[31m (2 FAILED)[39m (0 secs / 0.328 secs)
+[1A[2K[31mChrome Headless 147.0.0.0 (Windows 10) DashboardComponent should create FAILED[39m
+	ɵNotFound: NG0201: No provider found for `_HttpClient`. Source: Standalone[DashboardComponent2]. Path: DashboardService2 -> _HttpClient. Find more at https://v20.angular.dev/errors/NG0201
+	error properties: Object({ code: -201, ngErrorCode: -201, ngErrorMessage: 'No provider found for `_HttpClient`.', ngTokenPath: [ 'DashboardService2', '_HttpClient' ] })
+	ɵNotFound: NG0201: No provider found for `_HttpClient`. Source: Standalone[DashboardComponent2]. Path: DashboardService2 -> _HttpClient. Find more at https://v20.angular.dev/errors/NG0201
+	    at createRuntimeError (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:924:19)
+	    at NullInjector.get (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1494:27)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:2052:33)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:2052:33)
+	    at R3Injector.retrieve (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1936:25)
+	    at injectInjectorOnly (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1049:39)
+	    at ɵɵinject (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1061:42)
+	    at inject2 (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1149:12)
+	    at DashboardService2.<instance_members_initializer> (src/app/core/services/dashboard.ts:13:18)
+	    at new DashboardService2 (src/app/core/services/dashboard.ts:12:8)
+Chrome Headless 147.0.0.0 (Windows 10): Executed 4 of 20[31m (3 FAILED)[39m (0 secs / 0.352 secs)
+[1A[2K[31mChrome Headless 147.0.0.0 (Windows 10) CategoryManagement should create FAILED[39m
+	ɵNotFound: NG0201: No provider found for `_HttpClient`. Source: Standalone[CategoryManagement2]. Path: Category2 -> _HttpClient. Find more at https://v20.angular.dev/errors/NG0201
+	error properties: Object({ code: -201, ngErrorCode: -201, ngErrorMessage: 'No provider found for `_HttpClient`.', ngTokenPath: [ 'Category2', '_HttpClient' ] })
+	ɵNotFound: NG0201: No provider found for `_HttpClient`. Source: Standalone[CategoryManagement2]. Path: Category2 -> _HttpClient. Find more at https://v20.angular.dev/errors/NG0201
+	    at createRuntimeError (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:924:19)
+	    at NullInjector.get (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1494:27)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:2052:33)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:2052:33)
+	    at R3Injector.retrieve (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1936:25)
+	    at injectInjectorOnly (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1049:39)
+	    at ɵɵinject (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1061:42)
+	    at inject2 (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1149:12)
+	    at Category2.<instance_members_initializer> (src/app/core/services/category.ts:11:18)
+	    at new Category2 (src/app/core/services/category.ts:10:8)
+Chrome Headless 147.0.0.0 (Windows 10): Executed 5 of 20[31m (4 FAILED)[39m (0 secs / 0.369 secs)
+[1A[2K[31mChrome Headless 147.0.0.0 (Windows 10) TicketList should create FAILED[39m
+	ɵNotFound: NG0201: No provider found for `_HttpClient`. Source: Standalone[TicketList2]. Path: TicketService2 -> _HttpClient. Find more at https://v20.angular.dev/errors/NG0201
+	error properties: Object({ code: -201, ngErrorCode: -201, ngErrorMessage: 'No provider found for `_HttpClient`.', ngTokenPath: [ 'TicketService2', '_HttpClient' ] })
+	ɵNotFound: NG0201: No provider found for `_HttpClient`. Source: Standalone[TicketList2]. Path: TicketService2 -> _HttpClient. Find more at https://v20.angular.dev/errors/NG0201
+	    at createRuntimeError (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:924:19)
+	    at NullInjector.get (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1494:27)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:2052:33)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:2052:33)
+	    at R3Injector.retrieve (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1936:25)
+	    at injectInjectorOnly (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1049:39)
+	    at ɵɵinject (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1061:42)
+	    at inject2 (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1149:12)
+	    at TicketService2.<instance_members_initializer> (src/app/core/services/ticket.ts:13:18)
+	    at new TicketService2 (src/app/core/services/ticket.ts:12:8)
+Chrome Headless 147.0.0.0 (Windows 10): Executed 6 of 20[31m (5 FAILED)[39m (0 secs / 0.39 secs)
+[1A[2K[31mChrome Headless 147.0.0.0 (Windows 10) TicketCreate should create FAILED[39m
+	ɵNotFound: NG0201: No provider found for `_HttpClient`. Source: Standalone[TicketCreate2]. Path: TicketService2 -> _HttpClient. Find more at https://v20.angular.dev/errors/NG0201
+	error properties: Object({ code: -201, ngErrorCode: -201, ngErrorMessage: 'No provider found for `_HttpClient`.', ngTokenPath: [ 'TicketService2', '_HttpClient' ] })
+	ɵNotFound: NG0201: No provider found for `_HttpClient`. Source: Standalone[TicketCreate2]. Path: TicketService2 -> _HttpClient. Find more at https://v20.angular.dev/errors/NG0201
+	    at createRuntimeError (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:924:19)
+	    at NullInjector.get (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1494:27)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:2052:33)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:2052:33)
+	    at R3Injector.retrieve (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1936:25)
+	    at injectInjectorOnly (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1049:39)
+	    at ɵɵinject (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1061:42)
+	    at inject2 (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1149:12)
+	    at TicketService2.<instance_members_initializer> (src/app/core/services/ticket.ts:13:18)
+	    at new TicketService2 (src/app/core/services/ticket.ts:12:8)
+Chrome Headless 147.0.0.0 (Windows 10): Executed 7 of 20[31m (6 FAILED)[39m (0 secs / 0.41 secs)
+[1A[2KChrome Headless 147.0.0.0 (Windows 10): Executed 8 of 20[31m (6 FAILED)[39m (0 secs / 0.411 secs)
+[1A[2KChrome Headless 147.0.0.0 (Windows 10): Executed 9 of 20[31m (6 FAILED)[39m (0 secs / 0.413 secs)
+[1A[2KChrome Headless 147.0.0.0 (Windows 10): Executed 10 of 20[31m (6 FAILED)[39m (0 secs / 0.413 secs)
+[1A[2K[31mChrome Headless 147.0.0.0 (Windows 10) TicketDetail should create FAILED[39m
+	ɵNotFound: NG0201: No provider found for `ActivatedRoute`. Source: Standalone[TicketDetail2]. Find more at https://v20.angular.dev/errors/NG0201
+	error properties: Object({ code: -201, ngErrorCode: -201, ngErrorMessage: 'No provider found for `ActivatedRoute`.', ngTokenPath: [ 'ActivatedRoute' ] })
+	ɵNotFound: NG0201: No provider found for `ActivatedRoute`. Source: Standalone[TicketDetail2]. Find more at https://v20.angular.dev/errors/NG0201
+	    at createRuntimeError (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:924:19)
+	    at NullInjector.get (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1494:27)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:2052:33)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:2052:33)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:2052:33)
+	    at ChainedInjector.get (node_modules/@angular/core/fesm2022/debug_node.mjs:13498:36)
+	    at lookupTokenUsingModuleInjector (node_modules/@angular/core/fesm2022/debug_node.mjs:1718:39)
+	    at getOrCreateInjectable (node_modules/@angular/core/fesm2022/debug_node.mjs:1766:12)
+	    at ɵɵdirectiveInject (node_modules/@angular/core/fesm2022/debug_node.mjs:13549:19)
+	    at ɵɵinject (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1061:42)
+Chrome Headless 147.0.0.0 (Windows 10): Executed 11 of 20[31m (7 FAILED)[39m (0 secs / 0.428 secs)
+[1A[2KChrome Headless 147.0.0.0 (Windows 10): Executed 12 of 20[31m (7 FAILED)[39m (0 secs / 0.428 secs)
+[1A[2KChrome Headless 147.0.0.0 (Windows 10): Executed 13 of 20[31m (7 FAILED)[39m (0 secs / 0.429 secs)
+[1A[2KChrome Headless 147.0.0.0 (Windows 10): Executed 14 of 20[31m (7 FAILED)[39m (0 secs / 0.43 secs)
+[1A[2K[31mChrome Headless 147.0.0.0 (Windows 10) UserManagement should create FAILED[39m
+	ɵNotFound: NG0201: No provider found for `_HttpClient`. Source: Standalone[UserManagement2]. Path: UserService2 -> _HttpClient. Find more at https://v20.angular.dev/errors/NG0201
+	error properties: Object({ code: -201, ngErrorCode: -201, ngErrorMessage: 'No provider found for `_HttpClient`.', ngTokenPath: [ 'UserService2', '_HttpClient' ] })
+	ɵNotFound: NG0201: No provider found for `_HttpClient`. Source: Standalone[UserManagement2]. Path: UserService2 -> _HttpClient. Find more at https://v20.angular.dev/errors/NG0201
+	    at createRuntimeError (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:924:19)
+	    at NullInjector.get (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1494:27)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:2052:33)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:2052:33)
+	    at R3Injector.retrieve (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1936:25)
+	    at injectInjectorOnly (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1049:39)
+	    at ɵɵinject (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1061:42)
+	    at inject2 (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1149:12)
+	    at UserService2.<instance_members_initializer> (src/app/core/services/user.ts:11:18)
+	    at new UserService2 (src/app/core/services/user.ts:10:8)
+Chrome Headless 147.0.0.0 (Windows 10): Executed 15 of 20[31m (8 FAILED)[39m (0 secs / 0.452 secs)
+[1A[2K[31mChrome Headless 147.0.0.0 (Windows 10) App should render title FAILED[39m
+	ɵNotFound: NG0201: No provider found for `_HttpClient`. Source: Standalone[App2]. Path: AuthService2 -> _HttpClient. Find more at https://v20.angular.dev/errors/NG0201
+	error properties: Object({ code: -201, ngErrorCode: -201, ngErrorMessage: 'No provider found for `_HttpClient`.', ngTokenPath: [ 'AuthService2', '_HttpClient' ] })
+	ɵNotFound: NG0201: No provider found for `_HttpClient`. Source: Standalone[App2]. Path: AuthService2 -> _HttpClient. Find more at https://v20.angular.dev/errors/NG0201
+	    at createRuntimeError (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:924:19)
+	    at NullInjector.get (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1494:27)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:2052:33)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:2052:33)
+	    at R3Injector.retrieve (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1936:25)
+	    at injectInjectorOnly (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1049:39)
+	    at ɵɵinject (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1061:42)
+	    at inject2 (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1149:12)
+	    at AuthService2.<instance_members_initializer> (src/app/core/services/auth.ts:14:18)
+	    at new AuthService2 (src/app/core/services/auth.ts:12:8)
+Chrome Headless 147.0.0.0 (Windows 10): Executed 16 of 20[31m (9 FAILED)[39m (0 secs / 0.456 secs)
+[1A[2K[31mChrome Headless 147.0.0.0 (Windows 10) App should create the app FAILED[39m
+	ɵNotFound: NG0201: No provider found for `_HttpClient`. Source: Standalone[App2]. Path: AuthService2 -> _HttpClient. Find more at https://v20.angular.dev/errors/NG0201
+	error properties: Object({ code: -201, ngErrorCode: -201, ngErrorMessage: 'No provider found for `_HttpClient`.', ngTokenPath: [ 'AuthService2', '_HttpClient' ] })
+	ɵNotFound: NG0201: No provider found for `_HttpClient`. Source: Standalone[App2]. Path: AuthService2 -> _HttpClient. Find more at https://v20.angular.dev/errors/NG0201
+	    at createRuntimeError (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:924:19)
+	    at NullInjector.get (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1494:27)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:2052:33)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:2052:33)
+	    at R3Injector.retrieve (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1936:25)
+	    at injectInjectorOnly (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1049:39)
+	    at ɵɵinject (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1061:42)
+	    at inject2 (node_modules/@angular/core/fesm2022/root_effect_scheduler.mjs:1149:12)
+	    at AuthService2.<instance_members_initializer> (src/app/core/services/auth.ts:14:18)
+	    at new AuthService2 (src/app/core/services/auth.ts:12:8)
+Chrome Headless 147.0.0.0 (Windows 10): Executed 17 of 20[31m (10 FAILED)[39m (0 secs / 0.459 secs)
+[1A[2KChrome Headless 147.0.0.0 (Windows 10): Executed 18 of 20[31m (10 FAILED)[39m (0 secs / 0.462 secs)
+[1A[2KChrome Headless 147.0.0.0 (Windows 10): Executed 19 of 20[31m (10 FAILED)[39m (0 secs / 0.463 secs)
+[1A[2KChrome Headless 147.0.0.0 (Windows 10): Executed 20 of 20[31m (10 FAILED)[39m (0 secs / 0.464 secs)
+[1A[2KChrome Headless 147.0.0.0 (Windows 10): Executed 20 of 20[31m (10 FAILED)[39m (0.495 secs / 0.464 secs)
+[31mTOTAL: 10 FAILED, 10 SUCCESS[39m

@@ -1,13 +1,20 @@
 import { TestBed } from '@angular/core/testing';
+import { DashboardService } from './dashboard';
+import { HttpClient } from '@angular/common/http';
 
-import { Dashboard } from './dashboard';
-
-describe('Dashboard', () => {
-  let service: Dashboard;
+describe('DashboardService', () => {
+  let service: DashboardService;
+  let mockHttpClient: jasmine.SpyObj<HttpClient>;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(Dashboard);
+    mockHttpClient = jasmine.createSpyObj('HttpClient', ['get', 'post', 'put', 'delete']);
+    TestBed.configureTestingModule({
+      providers: [
+        DashboardService,
+        { provide: HttpClient, useValue: mockHttpClient }
+      ]
+    });
+    service = TestBed.inject(DashboardService);
   });
 
   it('should be created', () => {

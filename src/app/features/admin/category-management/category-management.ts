@@ -8,7 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDividerModule } from '@angular/material/divider';
-import { Category } from '../../../core/services/category';
+import { CategoryService } from '../../../core/services/category';
 
 @Component({
   selector: 'app-category-management',
@@ -28,7 +28,7 @@ import { Category } from '../../../core/services/category';
 })
 export class CategoryManagement implements OnInit {
 
-private categoryService = inject(Category);
+private categoryService = inject(CategoryService );
 
   categories: any[] = [];
   isLoading = false;

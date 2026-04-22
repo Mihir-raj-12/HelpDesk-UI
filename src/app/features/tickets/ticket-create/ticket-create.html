@@ -23,6 +23,17 @@
 
         <form [formGroup]="ticketForm" (ngSubmit)="onSubmit()" class="ticket-form">
           
+          <mat-form-field appearance="outline" class="full-width" *ngIf="isAdmin">
+            <mat-label>Raise On Behalf Of (Select User)</mat-label>
+            <mat-select formControlName="raisedForUserId" required>
+              <mat-option *ngFor="let user of allUsers" [value]="user.id">
+                {{ user.fullName }} ({{ user.email }})
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="ticketForm.get('raisedForUserId')?.hasError('required')">Please select a user.</mat-error>
+          </mat-form-field>
+
+
           <mat-form-field appearance="outline" class="full-width">
             <mat-label>Ticket Title</mat-label>
             <input matInput formControlName="title" placeholder="Brief summary of the issue">

@@ -1,0 +1,1 @@
+src/app/core/services/category.spec.ts(2,10): error TS2305: Module '"./category"' has no exported member 'Category'.

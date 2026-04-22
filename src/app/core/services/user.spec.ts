@@ -1,13 +1,20 @@
 import { TestBed } from '@angular/core/testing';
+import { UserService } from './user';
+import { HttpClient } from '@angular/common/http';
 
-import { User } from './user';
-
-describe('User', () => {
-  let service: User;
+describe('UserService', () => {
+  let service: UserService;
+  let mockHttpClient: jasmine.SpyObj<HttpClient>;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(User);
+    mockHttpClient = jasmine.createSpyObj('HttpClient', ['get', 'post', 'put', 'delete']);
+    TestBed.configureTestingModule({
+      providers: [
+        UserService,
+        { provide: HttpClient, useValue: mockHttpClient }
+      ]
+    });
+    service = TestBed.inject(UserService);
   });
 
   it('should be created', () => {

@@ -12,12 +12,9 @@ import { DashboardStats } from '../../shared/models/dashboard.model';
 export class DashboardService {
   private http = inject(HttpClient);
   
-  // Notice the capital 'D' just to perfectly match your C# controller name
   private apiUrl = `${environment.apiUrl}/Dashboard/stats`; 
 
   getStats() : Observable<ApiResponse<DashboardStats>> {
-    // 2. FIXED: Removed the extra '/stats' to match standard C# routing
-    // (If your C# controller specifically uses [HttpGet("stats")], you can add it back!)
     return this.http.get<ApiResponse<DashboardStats>>(this.apiUrl);
   }
 }
