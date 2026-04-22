@@ -2,15 +2,17 @@
   
   <header class="dashboard-header">
     <h1>Dashboard Overview</h1>
-    <p>Welcome back! Here is what is happening today.</p>
+    <p>Welcome back! Here is a real-time snapshot of your support system.</p>
   </header>
 
   <div *ngIf="!stats && !errorMessage" class="loading-state">
-    Loading statistics...
+    <mat-icon class="spinning">autorenew</mat-icon> 
+    <p>Calculating statistics...</p>
   </div>
 
   <div *ngIf="errorMessage" class="error-state">
-    {{ errorMessage }}
+    <mat-icon>error_outline</mat-icon> 
+    <p>{{ errorMessage }}</p>
   </div>
 
   <ng-container *ngIf="stats">
@@ -23,6 +25,10 @@
             <mat-icon>confirmation_number</mat-icon>
           </div>
           <h2 class="stat-value">{{ stats.totalTickets }}</h2>
+          <div class="stat-footer" [ngClass]="getTrend().isUp ? 'trend-up' : 'trend-down'">
+            <mat-icon class="tiny-icon">{{ getTrend().isUp ? 'trending_up' : 'trending_down' }}</mat-icon>
+            <span>{{ getTrend().value | number:'1.0-0' }}% from last month</span>
+          </div>
         </mat-card-content>
       </mat-card>
 
@@ -33,6 +39,7 @@
             <mat-icon>fiber_new</mat-icon>
           </div>
           <h2 class="stat-value">{{ stats.openTickets }}</h2>
+          <mat-progress-bar mode="determinate" [value]="getPercent(stats.openTickets, stats.totalTickets)" color="warn"></mat-progress-bar>
         </mat-card-content>
       </mat-card>
 
@@ -43,6 +50,7 @@
             <mat-icon>autorenew</mat-icon>
           </div>
           <h2 class="stat-value">{{ stats.inProgressTickets }}</h2>
+          <mat-progress-bar mode="determinate" [value]="getPercent(stats.inProgressTickets, stats.totalTickets)" color="accent"></mat-progress-bar>
         </mat-card-content>
       </mat-card>
 
@@ -53,6 +61,7 @@
             <mat-icon>check_circle</mat-icon>
           </div>
           <h2 class="stat-value">{{ stats.resolvedTickets }}</h2>
+          <mat-progress-bar mode="determinate" [value]="getPercent(stats.resolvedTickets, stats.totalTickets)" color="primary"></mat-progress-bar>
         </mat-card-content>
       </mat-card>
     </div>
@@ -64,25 +73,40 @@
           <mat-card-title>Tickets by Priority</mat-card-title>
         </mat-card-header>
         <mat-divider></mat-divider>
-        <mat-card-content>
-          <mat-list>
-            <mat-list-item>
-              <span matListItemTitle>Critical Priority</span>
-              <span matListItemLine class="text-danger">{{ stats.criticalPriorityTickets }} Tickets</span>
-            </mat-list-item>
-            <mat-list-item>
-              <span matListItemTitle>High Priority</span>
-              <span matListItemLine class="text-warning">{{ stats.highPriorityTickets }} Tickets</span>
-            </mat-list-item>
-            <mat-list-item>
-              <span matListItemTitle>Medium Priority</span>
-              <span matListItemLine>{{ stats.mediumPriorityTickets }} Tickets</span>
-            </mat-list-item>
-            <mat-list-item>
-              <span matListItemTitle>Low Priority</span>
-              <span matListItemLine class="text-muted">{{ stats.lowPriorityTickets }} Tickets</span>
-            </mat-list-item>
-          </mat-list>
+        <mat-card-content style="padding-top: 24px;">
+          
+          <div class="priority-row">
+            <div class="prio-label"><span class="dot critical"></span> Critical</div>
+            <div class="prio-bar-container">
+              <div class="prio-bar bg-critical" [style.width.%]="getPercent(stats.criticalPriorityTickets, stats.totalTickets)"></div>
+            </div>
+            <div class="prio-count">{{ stats.criticalPriorityTickets }}</div>
+          </div>
+
+          <div class="priority-row">
+            <div class="prio-label"><span class="dot high"></span> High</div>
+            <div class="prio-bar-container">
+              <div class="prio-bar bg-high" [style.width.%]="getPercent(stats.highPriorityTickets, stats.totalTickets)"></div>
+            </div>
+            <div class="prio-count">{{ stats.highPriorityTickets }}</div>
+          </div>
+
+          <div class="priority-row">
+            <div class="prio-label"><span class="dot medium"></span> Medium</div>
+            <div class="prio-bar-container">
+              <div class="prio-bar bg-medium" [style.width.%]="getPercent(stats.mediumPriorityTickets, stats.totalTickets)"></div>
+            </div>
+            <div class="prio-count">{{ stats.mediumPriorityTickets }}</div>
+          </div>
+
+          <div class="priority-row">
+            <div class="prio-label"><span class="dot low"></span> Low</div>
+            <div class="prio-bar-container">
+              <div class="prio-bar bg-low" [style.width.%]="getPercent(stats.lowPriorityTickets, stats.totalTickets)"></div>
+            </div>
+            <div class="prio-count">{{ stats.lowPriorityTickets }}</div>
+          </div>
+
         </mat-card-content>
       </mat-card>
 
@@ -92,20 +116,22 @@
         </mat-card-header>
         <mat-divider></mat-divider>
         <mat-card-content>
-          <mat-list *ngIf="stats.topAgents.length > 0; else noAgents">
-            <mat-list-item *ngFor="let agent of stats.topAgents">
-              <mat-icon matListItemIcon>person</mat-icon>
-              <span matListItemTitle>{{ agent.agentName }}</span>
-              <span matListItemLine>{{ agent.resolvedTicketsCount }} Resolved</span>
+          <mat-list *ngIf="stats.topAgents && stats.topAgents.length > 0; else noAgents">
+            <mat-list-item *ngFor="let agent of stats.topAgents; let i = index" class="leaderboard-item">
+              <div matListItemAvatar class="rank-avatar" [ngClass]="'rank-' + (i + 1)">#{{ i + 1 }}</div>
+              <span matListItemTitle style="font-weight: 500;">{{ agent.agentName }}</span>
+              <span matListItemLine class="text-muted">{{ agent.resolvedTicketsCount }} Tickets Resolved</span>
             </mat-list-item>
           </mat-list>
           <ng-template #noAgents>
-            <p style="padding: 16px; color: gray;">No tickets resolved yet.</p>
+            <div class="empty-state">
+              <mat-icon>sentiment_dissatisfied</mat-icon>
+              <p>No tickets resolved yet.</p>
+            </div>
           </ng-template>
         </mat-card-content>
       </mat-card>
 
     </div>
   </ng-container>
-
 </div>
